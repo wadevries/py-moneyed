@@ -24,6 +24,10 @@ class Currency(object):
     def __repr__(self):
         return self.code
 
+    @property
+    def symbol(self):
+        from localization import _FORMATTER
+        return _FORMATTER.get_sign_definition(self.code, "default")[0]
 
 class MoneyComparisonError(TypeError):
     # This exception was needed often enough to merit its own
